@@ -54,8 +54,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         let riskVC = UIStoryboard(storyboard: .risk).instantiateInitialViewController() as! RiskViewController
         riskVC.image = photo
         present(riskVC, animated: true, completion: nil)
-//        let newVC = PhotoViewController(image: photo)
-//        self.present(newVC, animated: true, completion: nil)
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {

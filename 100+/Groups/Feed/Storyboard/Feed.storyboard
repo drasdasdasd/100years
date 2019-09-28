@@ -33,6 +33,9 @@
                                                 <segment title="По месяцам"/>
                                             </segments>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="switcherChanged:" destination="YGl-ln-fTI" eventType="valueChanged" id="zHD-TW-jme"/>
+                                            </connections>
                                         </segmentedControl>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hf1-9J-UZs" customClass="DaysView" customModule="_00_" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="62" width="375" height="546"/>
@@ -393,7 +396,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.3529411764705882" green="0.28235294117647058" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="C3t-2r-eOw" firstAttribute="leading" secondItem="UEO-gt-Nks" secondAttribute="leading" constant="20" id="Jb5-19-FoH"/>
                                                 <constraint firstItem="MDR-GT-3au" firstAttribute="top" secondItem="UEO-gt-Nks" secondAttribute="top" id="OeV-uo-Qdw"/>
@@ -404,6 +407,15 @@
                                                 <constraint firstItem="MDR-GT-3au" firstAttribute="centerX" secondItem="UEO-gt-Nks" secondAttribute="centerX" id="sqG-CP-Hgu"/>
                                                 <constraint firstAttribute="bottom" secondItem="C3t-2r-eOw" secondAttribute="bottom" constant="20" id="woZ-pS-6du"/>
                                             </constraints>
+                                            <connections>
+                                                <outlet property="bpmLabel" destination="tkx-Cx-rKl" id="1pU-9J-PQw"/>
+                                                <outlet property="monthLabel" destination="jNE-ih-ugi" id="gtI-cK-msG"/>
+                                                <outlet property="photoProblem" destination="897-b8-LBc" id="LiV-hp-eDt"/>
+                                                <outlet property="photoProblemDescription" destination="6jJ-uc-x2Y" id="s5K-wf-LIo"/>
+                                                <outlet property="statsView" destination="YPX-OV-Arg" id="TYG-Qm-et0"/>
+                                                <outlet property="stepsDescriptionLabel" destination="Hba-EX-XEH" id="8YT-CJ-8fy"/>
+                                                <outlet property="stepsLabel" destination="tAh-pd-Ma7" id="v3F-wt-u0f"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -434,6 +446,9 @@
                     </view>
                     <connections>
                         <outlet property="daysView" destination="Hf1-9J-UZs" id="zuq-hy-HU9"/>
+                        <outlet property="headerView" destination="m0V-96-t2e" id="1Vi-to-fc3"/>
+                        <outlet property="monthView" destination="UEO-gt-Nks" id="x7a-Hm-S6F"/>
+                        <outlet property="tableView" destination="oJe-Kn-0th" id="v17-UM-os0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETj-af-vBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
