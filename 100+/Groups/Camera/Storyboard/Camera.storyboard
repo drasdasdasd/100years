@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sd8-wU-imp">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="lFC-Z2-GIS">
+            <objects>
+                <viewController id="sd8-wU-imp" customClass="CameraViewController" customModule="_00_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fxK-gQ-N3H"/>
+                        <viewControllerLayoutGuide type="bottom" id="FLL-5L-mVp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7fG-xw-EDB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3v8-AT-5iw" customClass="SwiftyRecordButton" customModule="DemoSwiftyCam" customModuleProvider="target">
+                                <rect key="frame" x="169.5" y="801" width="75" height="75"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="2O0-ve-HnA"/>
+                                    <constraint firstAttribute="height" constant="75" id="3Py-60-2h1"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiF-g0-TV8">
+                                <rect key="frame" x="89.5" y="827" width="30" height="23"/>
+                                <state key="normal" image="flipCamera"/>
+                                <connections>
+                                    <action selector="cameraSwitchTapped:" destination="sd8-wU-imp" eventType="touchUpInside" id="Piz-GY-8ag"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ruk-Cp-kKK">
+                                <rect key="frame" x="294.5" y="823.5" width="18" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="1SF-fe-IWg"/>
+                                    <constraint firstAttribute="height" constant="30" id="uWy-dC-3gA"/>
+                                </constraints>
+                                <state key="normal" image="flashOutline"/>
+                                <connections>
+                                    <action selector="toggleFlashTapped:" destination="sd8-wU-imp" eventType="touchUpInside" id="fk8-VO-5vz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ruk-Cp-kKK" firstAttribute="leading" secondItem="3v8-AT-5iw" secondAttribute="trailing" constant="50" id="4sb-LP-u5a"/>
+                            <constraint firstItem="3v8-AT-5iw" firstAttribute="leading" secondItem="wiF-g0-TV8" secondAttribute="trailing" constant="50" id="Jvv-at-oSw"/>
+                            <constraint firstAttribute="bottom" secondItem="3v8-AT-5iw" secondAttribute="bottom" constant="20" symbolic="YES" id="PSE-3k-E54"/>
+                            <constraint firstItem="Ruk-Cp-kKK" firstAttribute="centerY" secondItem="3v8-AT-5iw" secondAttribute="centerY" id="fRQ-Na-wQj"/>
+                            <constraint firstItem="wiF-g0-TV8" firstAttribute="centerY" secondItem="3v8-AT-5iw" secondAttribute="centerY" id="jHg-pI-j3x"/>
+                            <constraint firstItem="3v8-AT-5iw" firstAttribute="centerX" secondItem="7fG-xw-EDB" secondAttribute="centerX" id="kOw-N0-qt2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A9e-Fc-zmj"/>
+                    </view>
+                    <connections>
+                        <outlet property="captureButton" destination="3v8-AT-5iw" id="5yQ-xg-XD1"/>
+                        <outlet property="flashButton" destination="Ruk-Cp-kKK" id="kiE-LF-eGh"/>
+                        <outlet property="flipCameraButton" destination="wiF-g0-TV8" id="nK6-zE-A7L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gmh-8M-1in" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="flashOutline" width="18" height="30"/>
+        <image name="flipCamera" width="30" height="23"/>
+    </resources>
+</document>
