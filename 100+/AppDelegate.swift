@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // setupRootViewController()
+        configureNetworkLogger()
         return true
     }
     
@@ -24,7 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = CameraViewController()
         window?.makeKeyAndVisible()
     }
-
+    
+    func configureNetworkLogger() {
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
+    }
 
 }
 
