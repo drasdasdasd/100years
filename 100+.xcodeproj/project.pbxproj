@@ -33,6 +33,7 @@
 		920889C4233FF1270018778D /* FileServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889C3233FF1270018778D /* FileServerManager.swift */; };
 		920889C6233FF22A0018778D /* RiskServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889C5233FF22A0018778D /* RiskServerManager.swift */; };
 		920889C9233FF6950018778D /* RiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889C8233FF6950018778D /* RiskModel.swift */; };
+		920889CC234005560018778D /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CB234005560018778D /* StatsView.swift */; };
 		9214CC7D233E785D00B8FB7B /* PollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC7C233E785D00B8FB7B /* PollViewController.swift */; };
 		9214CC83233E85C700B8FB7B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9214CC82233E85C700B8FB7B /* HealthKit.framework */; };
 		9214CC86233EC7FC00B8FB7B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC85233EC7FC00B8FB7B /* HealthKitManager.swift */; };
@@ -76,6 +77,7 @@
 		920889C3233FF1270018778D /* FileServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServerManager.swift; sourceTree = "<group>"; };
 		920889C5233FF22A0018778D /* RiskServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskServerManager.swift; sourceTree = "<group>"; };
 		920889C8233FF6950018778D /* RiskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskModel.swift; sourceTree = "<group>"; };
+		920889CB234005560018778D /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		9214CC7C233E785D00B8FB7B /* PollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollViewController.swift; sourceTree = "<group>"; };
 		9214CC80233E85C600B8FB7B /* 100+.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "100+.entitlements"; sourceTree = "<group>"; };
 		9214CC82233E85C700B8FB7B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -245,6 +247,7 @@
 		920889B6233FEB6B0018778D /* Risk */ = {
 			isa = PBXGroup;
 			children = (
+				920889CA2340052F0018778D /* View */,
 				920889C7233FF22D0018778D /* Manager */,
 				920889B8233FEBAA0018778D /* Storyboard */,
 				920889B7233FEBA40018778D /* ViewController */,
@@ -290,6 +293,14 @@
 				920889C5233FF22A0018778D /* RiskServerManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		920889CA2340052F0018778D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				920889CB234005560018778D /* StatsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9214CC78233E757200B8FB7B /* AppStyle */ = {
@@ -590,6 +601,7 @@
 				920889B2233FE1DB0018778D /* SwiftyRecordButton.swift in Sources */,
 				920889BF233FEEDD0018778D /* Storyboard.swift in Sources */,
 				920889A9233FE0970018778D /* SwiftyCamButton.swift in Sources */,
+				920889CC234005560018778D /* StatsView.swift in Sources */,
 				9214CC7D233E785D00B8FB7B /* PollViewController.swift in Sources */,
 				920889C1233FEF340018778D /* StringExtension.swift in Sources */,
 				92088987233EE1D10018778D /* AppColor.swift in Sources */,

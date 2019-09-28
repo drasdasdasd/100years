@@ -10,11 +10,16 @@ import UIKit
 
 class RiskViewController: UIViewController {
     
+    // - UI
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var statsView: StatsView!
+    
     // - Manager
     private let riskServerManager = RiskServerManager()
     
     // - Data
     var image: UIImage!
+    private var index = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +34,39 @@ class RiskViewController: UIViewController {
 private extension RiskViewController {
     
     func configure() {
-        loadPhoto()
+        // configureImageView()
+        // loadPhoto()
+        fillStatsView()
+    }
+    
+    func configureImageView() {
+        photoImageView.image = image
     }
     
     func loadPhoto() {
         let imageData = image.jpegData(compressionQuality: 1.0) ?? Data()
         riskServerManager.upload(data: imageData) { (risk, error) in
-            // code
+            if let risk = risk {
+                // dismiss(animated: true, completion: nil)
+            }
         }
+    }
+    
+    func fillStatsView() {
+        statsView.update(title: Const.titles[index], text: Const.textes[index], color: Const.colors[index], index: index + 1)
+    }
+    
+}
+
+// MARK: -
+// MARK: - Const
+
+private extension RiskViewController {
+    
+    enum Const {
+        static let titles = ["Все хорошо", "Лучше сходите к врачу", "Срочно к врачу!"]
+        static let textes = ["Ведите здоровый образ жизни", "Проверьте свое здоровье в клинике", "Вам нужно вести здоровый образ жизни и регулярно проверять свое здоровье"]
+        static let colors = [AppColor.color(fromHex: "40C17B"), AppColor.color(fromHex: "FF9B04"), AppColor.color(fromHex: "FF2E00")]
     }
     
 }
