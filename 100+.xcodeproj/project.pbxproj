@@ -34,6 +34,8 @@
 		920889C6233FF22A0018778D /* RiskServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889C5233FF22A0018778D /* RiskServerManager.swift */; };
 		920889C9233FF6950018778D /* RiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889C8233FF6950018778D /* RiskModel.swift */; };
 		920889CC234005560018778D /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CB234005560018778D /* StatsView.swift */; };
+		920889CE23400D6E0018778D /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CD23400D6E0018778D /* MonthView.swift */; };
+		920889D0234011210018778D /* StatsSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CF234011210018778D /* StatsSmallView.swift */; };
 		9214CC7D233E785D00B8FB7B /* PollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC7C233E785D00B8FB7B /* PollViewController.swift */; };
 		9214CC83233E85C700B8FB7B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9214CC82233E85C700B8FB7B /* HealthKit.framework */; };
 		9214CC86233EC7FC00B8FB7B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC85233EC7FC00B8FB7B /* HealthKitManager.swift */; };
@@ -78,6 +80,8 @@
 		920889C5233FF22A0018778D /* RiskServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskServerManager.swift; sourceTree = "<group>"; };
 		920889C8233FF6950018778D /* RiskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskModel.swift; sourceTree = "<group>"; };
 		920889CB234005560018778D /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		920889CD23400D6E0018778D /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		920889CF234011210018778D /* StatsSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSmallView.swift; sourceTree = "<group>"; };
 		9214CC7C233E785D00B8FB7B /* PollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollViewController.swift; sourceTree = "<group>"; };
 		9214CC80233E85C600B8FB7B /* 100+.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "100+.entitlements"; sourceTree = "<group>"; };
 		9214CC82233E85C700B8FB7B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +127,7 @@
 		92088988233EF7640018778D /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				92088994233F1B510018778D /* View */,
 				9208899A233FBA5C0018778D /* Manager */,
 				9208898F233F1A340018778D /* Cell */,
 				9208898A233EF7740018778D /* Storyboard */,
@@ -151,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				92088997233F1EFA0018778D /* Constant */,
-				92088994233F1B510018778D /* View */,
 				92088991233F1A440018778D /* Monthes */,
 				92088990233F1A3A0018778D /* Days */,
 			);
@@ -177,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				92088995233F1B5E0018778D /* DaysView.swift */,
+				920889CD23400D6E0018778D /* MonthView.swift */,
+				920889CF234011210018778D /* StatsSmallView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920889CE23400D6E0018778D /* MonthView.swift in Sources */,
 				9217DA0A233E5F16003D5479 /* HeartRateDetectionModel.m in Sources */,
 				9208899F233FC4940018778D /* DateExtension.swift in Sources */,
 				92088985233ECC250018778D /* HealthDataModel.swift in Sources */,
@@ -592,6 +599,7 @@
 				920889B0233FE16B0018778D /* CameraViewController.swift in Sources */,
 				920889C9233FF6950018778D /* RiskModel.swift in Sources */,
 				9208899C233FBA6F0018778D /* PointsManager.swift in Sources */,
+				920889D0234011210018778D /* StatsSmallView.swift in Sources */,
 				9214CC86233EC7FC00B8FB7B /* HealthKitManager.swift in Sources */,
 				9217D9F6233E5E19003D5479 /* AppDelegate.swift in Sources */,
 				92088999233F1F050018778D /* FeedConstant.swift in Sources */,
