@@ -23,6 +23,7 @@ class FeedViewController: UIViewController {
     
     // - Data
     private var steps = [StepModel]()
+    private var healthModel = HealthDataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,15 @@ private extension FeedViewController {
     
     func configure() {
         getSteps()
+        getHealthModel()
+    }
+    
+    func getHealthModel() {
+        healthModel = HealthDataBaseManager().healthModel ?? HealthDataModel()
+        pointsManager.getMonthSteps { [weak self] (steps) in
+            guard let strongSelf = self else { return }
+            strongSelf.monthView.update(health: strongSelf.healthModel, steps: Int(steps))
+        }
     }
     
     func getSteps() {

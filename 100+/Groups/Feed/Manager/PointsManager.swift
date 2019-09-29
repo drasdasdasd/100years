@@ -26,5 +26,9 @@ class PointsManager {
             }
         }
     }
+    
+    func getMonthSteps(completion: @escaping ((_ steps: Double) -> Void)) {
+        hkManager.getSteps(from: Date().startOfMonth(), completion: completion)
+    }
 
 }

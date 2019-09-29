@@ -60,5 +60,25 @@ class HealthKitManager: NSObject {
         
         healthStore.execute(query)
     }
+    
+    func getSteps(from: Date, completion: @escaping (Double) -> Void) {
+        let healthStore = HKHealthStore()
+        
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        
+        let predicate = HKQuery.predicateForSamples(withStart: from, end: Date(), options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+            DispatchQueue.main.async {
+                guard let result = result, let sum = result.sumQuantity() else {
+                    completion(0.0)
+                    return
+                }
+                completion(sum.doubleValue(for: HKUnit.count()))
+            }
+        }
+        
+        healthStore.execute(query)
+    }
 
 }

@@ -55,6 +55,7 @@ extension HeartRateViewController: HeartRateDetectionModelDelegate {
     func heartRateEnd() {
         bpms.removeFirst(0)
         let average = Int(bpms.reduce(0, +) / bpms.count)
+        healthModel.bpm = average
         titleLabel.text = "\(average)\nСредний пульс"
     }
     

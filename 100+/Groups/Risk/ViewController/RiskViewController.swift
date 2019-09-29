@@ -173,6 +173,9 @@ private extension RiskViewController {
         healthModel.title = Const.titles[localIndex]
         healthModel.color = Const.colors[localIndex]
         
+        healthModel.teeth = Int(riskModel.teeth)
+        healthModel.face = Int(riskModel.face)
+        
         healthDataBase.save(healthModel: healthModel)
     }
     

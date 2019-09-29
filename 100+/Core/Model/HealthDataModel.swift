@@ -20,6 +20,10 @@ class HealthDataModel: Object {
     @objc dynamic var steps = 1000
     @objc dynamic var primaryKey = "primaryKey"
     
+    // - Face
+    @objc dynamic var face = 0
+    @objc dynamic var teeth = 0
+    
     // - Layout
     @objc dynamic var title = ""
     @objc dynamic var color = ""
