@@ -12,9 +12,13 @@ import SwiftOverlayShims
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
+    // - UI
     @IBOutlet weak var captureButton    : SwiftyRecordButton!
     @IBOutlet weak var flipCameraButton : UIButton!
     @IBOutlet weak var flashButton      : UIButton!
+    
+    // - Data
+    var healthModel: HealthDataModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +56,9 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         let riskVC = UIStoryboard(storyboard: .risk).instantiateInitialViewController() as! RiskViewController
+        riskVC.healthModel = healthModel
         riskVC.image = photo
-        present(riskVC, animated: true, completion: nil)
+        navigationController?.pushViewController(riskVC, animated: true)
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {

@@ -16,11 +16,11 @@ class PointsManager {
     func getSteps(completion: @escaping ((_ steps: [StepModel]) -> Void)) {
         var values = [StepModel]()
         let now = Date()
-        for index in 0...15 {
+        for index in 0...31 {
             let date = now.date(days: -index) ?? Date()
             hkManager.getSteps(date: date) { (steps) in
                 values.append(StepModel(date: date, steps: Int(steps)))
-                if index == 15 {
+                if index == 31 {
                     completion(values)
                 }
             }

@@ -48,13 +48,13 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вам нужно вести здоровый образ жизни и регулярно проверять свое здоровье" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gme-eb-IE2">
-                                <rect key="frame" x="25" y="781" width="364" height="41"/>
+                                <rect key="frame" x="25" y="757" width="364" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Срочно к врачу!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4i-te-JHy">
-                                <rect key="frame" x="119.5" y="746.5" width="175" height="26.5"/>
+                                <rect key="frame" x="119.5" y="722.5" width="175" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,6 +73,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YON-G0-4Ci">
+                                <rect key="frame" x="20" y="808" width="374" height="54"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="WFK-4e-OvP"/>
+                                </constraints>
+                                <state key="normal" title="Продолжить →">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextButtonAction:" destination="tU4-f5-HhN" eventType="touchUpInside" id="c87-kV-jDb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -81,13 +99,16 @@
                             <constraint firstItem="jiR-3m-qO8" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="95Y-5S-kSv"/>
                             <constraint firstItem="8xo-QZ-Qhv" firstAttribute="top" secondItem="N7w-K4-htb" secondAttribute="bottom" constant="7" id="9fS-4i-PJj"/>
                             <constraint firstItem="4AE-4m-rGo" firstAttribute="top" secondItem="yK3-mR-55S" secondAttribute="top" constant="10" id="Dkf-iC-XyV"/>
+                            <constraint firstItem="YON-G0-4Ci" firstAttribute="top" secondItem="gme-eb-IE2" secondAttribute="bottom" constant="10" id="M7a-Ti-MM2"/>
                             <constraint firstItem="8xo-QZ-Qhv" firstAttribute="centerX" secondItem="jiR-3m-qO8" secondAttribute="centerX" id="SnK-BL-Uda"/>
                             <constraint firstAttribute="trailing" secondItem="gme-eb-IE2" secondAttribute="trailing" constant="25" id="Vai-pP-Lqh"/>
                             <constraint firstItem="jiR-3m-qO8" firstAttribute="centerY" secondItem="yK3-mR-55S" secondAttribute="centerY" id="VtX-si-wpz"/>
                             <constraint firstItem="W4i-te-JHy" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="djR-b3-CMe"/>
-                            <constraint firstItem="yK3-mR-55S" firstAttribute="bottom" secondItem="gme-eb-IE2" secondAttribute="bottom" constant="40" id="gVc-4W-B44"/>
+                            <constraint firstItem="yK3-mR-55S" firstAttribute="trailing" secondItem="YON-G0-4Ci" secondAttribute="trailing" constant="20" id="kNt-ZP-zEe"/>
+                            <constraint firstItem="YON-G0-4Ci" firstAttribute="bottom" secondItem="yK3-mR-55S" secondAttribute="bottom" id="mJJ-yn-XUJ"/>
                             <constraint firstItem="4AE-4m-rGo" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="pvi-2G-JLQ"/>
                             <constraint firstItem="gme-eb-IE2" firstAttribute="leading" secondItem="yK3-mR-55S" secondAttribute="leading" constant="25" id="qhV-pg-x0a"/>
+                            <constraint firstItem="YON-G0-4Ci" firstAttribute="leading" secondItem="yK3-mR-55S" secondAttribute="leading" constant="20" id="rnG-d6-cvx"/>
                             <constraint firstItem="gme-eb-IE2" firstAttribute="top" secondItem="W4i-te-JHy" secondAttribute="bottom" constant="8" id="ynT-T2-Q27"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yK3-mR-55S"/>

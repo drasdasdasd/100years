@@ -14,15 +14,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configureNetworkLogger()
+        setupRootViewController()
         return true
     }
     
     func setupRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = CameraViewController()
+
+        if let _ = HealthDataBaseManager().healthModel {
+            let feedVC = UIStoryboard(storyboard: .feed).instantiateInitialViewController() as! FeedViewController
+            let nVC = UINavigationController(rootViewController: feedVC)
+            nVC.setNavigationBarHidden(true, animated: false)
+            window?.rootViewController = nVC
+        } else {
+            let pollVC = UIStoryboard(storyboard: .main).instantiateInitialViewController() as! PollViewController
+            let nVC = UINavigationController(rootViewController: pollVC)
+            nVC.setNavigationBarHidden(true, animated: false)
+            window?.rootViewController = nVC
+        }
+        
         window?.makeKeyAndVisible()
     }
     

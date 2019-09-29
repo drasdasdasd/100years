@@ -36,6 +36,11 @@ class PollViewController: UIViewController {
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
+        if updateNextButton() {
+            let heartRateVC = UIStoryboard(storyboard: .heartRate).instantiateInitialViewController() as! HeartRateViewController
+            heartRateVC.healthModel = healthModel
+            navigationController?.pushViewController(heartRateVC, animated: true)
+        }
     }
     
     @IBAction func getFromHealthKitButtonAction(_ sender: Any) {
@@ -55,7 +60,7 @@ class PollViewController: UIViewController {
         default: break
         }
         view.endEditing(true)
-        updateNextButton()
+        let _ = updateNextButton()
     }
     
 }
@@ -114,7 +119,7 @@ extension PollViewController: UITextFieldDelegate {
         default: break
         }
         
-        updateNextButton()
+        let _ = updateNextButton()
         return true
     }
 
@@ -125,11 +130,13 @@ extension PollViewController: UITextFieldDelegate {
 
 extension PollViewController {
     
-    func updateNextButton() {
+    func updateNextButton() -> Bool {
         if healthModel.age > 0 && healthModel.height > 0 && healthModel.weight > 0 && healthModel.sex >= 0 && healthModel.smoking >= 0 && healthModel.relativeStroke >= 0 {
             nextButton.backgroundColor = AppColor.color(fromHex: "1A00FF")
             nextButton.setTitleColor(UIColor.white, for: .normal)
+            return true
         }
+        return false
     }
     
 }

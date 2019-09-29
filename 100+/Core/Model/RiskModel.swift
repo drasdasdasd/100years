@@ -10,8 +10,8 @@ import Foundation
 
 class RiskModel: Decodable {
     
-    var teeth = ""
-    var face = ""
+    var teeth = Double(0)
+    var face = Double(0)
     
     enum CodingKeys: String, CodingKey {
         case teeth = "teeth_plaque_percentage"
@@ -21,8 +21,8 @@ class RiskModel: Decodable {
     required convenience init(from decoder: Decoder) throws {
         self.init()
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        teeth = try values.decodeIfPresent(String.self, forKey: .teeth) ?? ""
-        face = try values.decodeIfPresent(String.self, forKey: .face) ?? ""
+        teeth = try values.decodeIfPresent(Double.self, forKey: .teeth) ?? 0.0
+        face = try values.decodeIfPresent(Double.self, forKey: .face) ?? 0.0
     }
     
 }

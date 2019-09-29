@@ -15,6 +15,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var monthView: MonthView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var footerView: UIView!
     
     // - Manager
     private let healthKitManager = HealthKitManager()
@@ -28,17 +29,25 @@ class FeedViewController: UIViewController {
         configure()
     }
 
+    @IBAction func cameraButtonAction(_ sender: Any) {
+    }
+    
+    @IBAction func likeButtonAction(_ sender: Any) {
+    }
+    
     @IBAction func switcherChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             daysView.isHidden = false
             monthView.isHidden = true
             headerView.backgroundColor = AppColor.color(fromHex: "00AC4F")
             tableView.backgroundColor = AppColor.color(fromHex: "00AC4F")
+            footerView.backgroundColor = AppColor.color(fromHex: "00AC4F")
         } else {
             daysView.isHidden = true
             monthView.isHidden = false
             headerView.backgroundColor = AppColor.color(fromHex: "5A48C0")
             tableView.backgroundColor = AppColor.color(fromHex: "5A48C0")
+            footerView.backgroundColor = AppColor.color(fromHex: "5A48C0")
         }
     }
     

@@ -8,5 +8,6 @@ target '100+' do
   # Pods for 100+
   pod 'Moya', '~> 13.0'
   pod 'AlamofireNetworkActivityLogger', '~> 2.0'
+  pod 'RealmSwift'
 
 end

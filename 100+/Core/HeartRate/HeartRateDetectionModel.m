@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 const int FRAMES_PER_SECOND = 30;
-const int SECONDS = 30;
+const int SECONDS = 3;
 
 @interface HeartRateDetectionModel() <AVCaptureVideoDataOutputSampleBufferDelegate>
 
@@ -69,7 +69,6 @@ const int SECONDS = 30;
     
     // Tell the device to use the max frame rate.
     [captureDevice lockForConfiguration:nil];
-    captureDevice.torchMode=AVCaptureTorchModeOn;
     captureDevice.activeFormat = currentFormat;
     captureDevice.activeVideoMinFrameDuration = CMTimeMake(1, FRAMES_PER_SECOND);
     captureDevice.activeVideoMaxFrameDuration = CMTimeMake(1, FRAMES_PER_SECOND);
@@ -101,8 +100,17 @@ const int SECONDS = 30;
             [self.delegate heartRateStart];
         });
     }
+    
+    [self setTorchOn:YES];
 }
 
+- (void) setTorchOn:(BOOL)isOn
+{
+    AVCaptureDevice* device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    [device lockForConfiguration:nil]; //you must lock before setting torch mode
+    [device setTorchMode:isOn ? AVCaptureTorchModeOn : AVCaptureTorchModeOff];
+    [device unlockForConfiguration];
+}
 - (void)stopDetection
 {
     [self.session stopRunning];
@@ -122,22 +130,22 @@ const int SECONDS = 30;
     // only run if we're not already processing an image
     // this is the image buffer
     CVImageBufferRef cvimgRef = CMSampleBufferGetImageBuffer(sampleBuffer);
-    
+
     // Lock the image buffer
     CVPixelBufferLockBaseAddress(cvimgRef,0);
-    
+
     // access the data
     NSInteger width = CVPixelBufferGetWidth(cvimgRef);
     NSInteger height = CVPixelBufferGetHeight(cvimgRef);
-    
+
     // get the raw image bytes
     uint8_t *buf=(uint8_t *) CVPixelBufferGetBaseAddress(cvimgRef);
     size_t bprow=CVPixelBufferGetBytesPerRow(cvimgRef);
     float r=0,g=0,b=0;
-    
+
     long widthScaleFactor = width/192;
     long heightScaleFactor = height/144;
-    
+
     // Get the average rgb values for the entire image.
     for(int y=0; y < height; y+=heightScaleFactor) {
         for(int x=0; x < width*4; x+=(4*widthScaleFactor)) {
@@ -151,42 +159,42 @@ const int SECONDS = 30;
     r/=255*(float) (width*height/widthScaleFactor/heightScaleFactor);
     g/=255*(float) (width*height/widthScaleFactor/heightScaleFactor);
     b/=255*(float) (width*height/widthScaleFactor/heightScaleFactor);
-    
+
     // The hue value is the most expressive when looking for heart beats.
     // Here we convert our rgb values in hsv and continue with the h value.
     UIColor *color = [UIColor colorWithRed:r green:g blue:b alpha:1.0];
     CGFloat hue, sat, bright;
     [color getHue:&hue saturation:&sat brightness:&bright alpha:nil];
-    
+
     [self.dataPointsHue addObject:@(hue)];
-    
+
     // Only send UI updates once a second
     if (self.dataPointsHue.count % FRAMES_PER_SECOND == 0)
     {
         if (self.delegate)
         {
             float displaySeconds = self.dataPointsHue.count / FRAMES_PER_SECOND;
-            
+
             NSArray *bandpassFilteredItems = [self butterworthBandpassFilter:self.dataPointsHue];
             NSArray *smoothedBandpassItems = [self medianSmoothing:bandpassFilteredItems];
             int peakCount = [self peakCount:smoothedBandpassItems];
-            
+
             float secondsPassed = smoothedBandpassItems.count / FRAMES_PER_SECOND;
             float percentage = secondsPassed / 60;
             float heartRate = peakCount / percentage;
-            
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate heartRateUpdate:heartRate atTime:displaySeconds];
             });
         }
     }
-    
+
     // If we have enough data points, start the analysis
     if (self.dataPointsHue.count == (SECONDS * FRAMES_PER_SECOND))
     {
         [self stopDetection];
     }
-    
+
     // Unlock the image buffer
     CVPixelBufferUnlockBaseAddress(cvimgRef,0);
 }

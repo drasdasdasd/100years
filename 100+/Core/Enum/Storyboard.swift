@@ -11,6 +11,10 @@ import Foundation
 enum Storyboard: String {
     
     case risk = "Risk"
+    case main = "Main"
+    case heartRate = "HeartRate"
+    case camera = "Camera"
+    case feed = "Feed"
     
     var filename: String {
         return rawValue

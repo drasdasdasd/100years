@@ -36,12 +36,13 @@
 		920889CC234005560018778D /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CB234005560018778D /* StatsView.swift */; };
 		920889CE23400D6E0018778D /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CD23400D6E0018778D /* MonthView.swift */; };
 		920889D0234011210018778D /* StatsSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889CF234011210018778D /* StatsSmallView.swift */; };
+		920889D2234016F50018778D /* FeedBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889D1234016F50018778D /* FeedBottomView.swift */; };
+		920889D5234034040018778D /* HealthDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920889D4234034040018778D /* HealthDataBaseManager.swift */; };
 		9214CC7D233E785D00B8FB7B /* PollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC7C233E785D00B8FB7B /* PollViewController.swift */; };
 		9214CC83233E85C700B8FB7B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9214CC82233E85C700B8FB7B /* HealthKit.framework */; };
 		9214CC86233EC7FC00B8FB7B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC85233EC7FC00B8FB7B /* HealthKitManager.swift */; };
 		9214CC88233EC8AB00B8FB7B /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9214CC87233EC8AB00B8FB7B /* HealthKitSetupAssistant.swift */; };
 		9217D9F6233E5E19003D5479 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217D9F5233E5E19003D5479 /* AppDelegate.swift */; };
-		9217D9F8233E5E19003D5479 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217D9F7233E5E19003D5479 /* ViewController.swift */; };
 		9217D9FB233E5E19003D5479 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9F9233E5E19003D5479 /* Main.storyboard */; };
 		9217D9FD233E5E1A003D5479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9FC233E5E1A003D5479 /* Assets.xcassets */; };
 		9217DA00233E5E1A003D5479 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9217D9FE233E5E1A003D5479 /* LaunchScreen.storyboard */; };
@@ -82,6 +83,8 @@
 		920889CB234005560018778D /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		920889CD23400D6E0018778D /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		920889CF234011210018778D /* StatsSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSmallView.swift; sourceTree = "<group>"; };
+		920889D1234016F50018778D /* FeedBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBottomView.swift; sourceTree = "<group>"; };
+		920889D4234034040018778D /* HealthDataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataBaseManager.swift; sourceTree = "<group>"; };
 		9214CC7C233E785D00B8FB7B /* PollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollViewController.swift; sourceTree = "<group>"; };
 		9214CC80233E85C600B8FB7B /* 100+.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "100+.entitlements"; sourceTree = "<group>"; };
 		9214CC82233E85C700B8FB7B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -89,7 +92,6 @@
 		9214CC87233EC8AB00B8FB7B /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
 		9217D9F2233E5E19003D5479 /* 100+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "100+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9217D9F5233E5E19003D5479 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9217D9F7233E5E19003D5479 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9217D9FA233E5E19003D5479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9217D9FC233E5E1A003D5479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9217D9FF233E5E1A003D5479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				92088995233F1B5E0018778D /* DaysView.swift */,
 				920889CD23400D6E0018778D /* MonthView.swift */,
 				920889CF234011210018778D /* StatsSmallView.swift */,
+				920889D1234016F50018778D /* FeedBottomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,6 +312,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		920889D3234033E20018778D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				920889D4234034040018778D /* HealthDataBaseManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		9214CC78233E757200B8FB7B /* AppStyle */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,7 +388,6 @@
 				9217DA0D233E5F71003D5479 /* Groups */,
 				9217DA0B233E5F5F003D5479 /* Core */,
 				9217D9F5233E5E19003D5479 /* AppDelegate.swift */,
-				9217D9F7233E5E19003D5479 /* ViewController.swift */,
 				9217D9F9233E5E19003D5479 /* Main.storyboard */,
 				9217D9FC233E5E1A003D5479 /* Assets.xcassets */,
 				9217D9FE233E5E1A003D5479 /* LaunchScreen.storyboard */,
@@ -390,6 +400,7 @@
 		9217DA0B233E5F5F003D5479 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				920889D3234033E20018778D /* Manager */,
 				920889C2233FF11A0018778D /* Server */,
 				920889BD233FEED30018778D /* Enum */,
 				920889A2233FE0850018778D /* Camera */,
@@ -414,10 +425,10 @@
 			isa = PBXGroup;
 			children = (
 				920889B6233FEB6B0018778D /* Risk */,
-				920889AD233FE1350018778D /* Camera */,
 				92088988233EF7640018778D /* Feed */,
-				9214CC79233E782E00B8FB7B /* Poll */,
+				920889AD233FE1350018778D /* Camera */,
 				9217DA0E233E5F81003D5479 /* HeartRate */,
+				9214CC79233E782E00B8FB7B /* Poll */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -589,9 +600,9 @@
 				92088993233F1A960018778D /* DayCollectionViewCell.swift in Sources */,
 				9208898E233EF7AD0018778D /* FeedViewController.swift in Sources */,
 				920889AA233FE0970018778D /* SwiftyCamViewController.swift in Sources */,
-				9217D9F8233E5E19003D5479 /* ViewController.swift in Sources */,
 				920889C4233FF1270018778D /* FileServerManager.swift in Sources */,
 				92088996233F1B5E0018778D /* DaysView.swift in Sources */,
+				920889D5234034040018778D /* HealthDataBaseManager.swift in Sources */,
 				920889A1233FC7F70018778D /* StepModel.swift in Sources */,
 				920889AB233FE0970018778D /* SwiftyCamViewControllerDelegate.swift in Sources */,
 				920889AC233FE0970018778D /* Orientation.swift in Sources */,
@@ -609,6 +620,7 @@
 				920889B2233FE1DB0018778D /* SwiftyRecordButton.swift in Sources */,
 				920889BF233FEEDD0018778D /* Storyboard.swift in Sources */,
 				920889A9233FE0970018778D /* SwiftyCamButton.swift in Sources */,
+				920889D2234016F50018778D /* FeedBottomView.swift in Sources */,
 				920889CC234005560018778D /* StatsView.swift in Sources */,
 				9214CC7D233E785D00B8FB7B /* PollViewController.swift in Sources */,
 				920889C1233FEF340018778D /* StringExtension.swift in Sources */,

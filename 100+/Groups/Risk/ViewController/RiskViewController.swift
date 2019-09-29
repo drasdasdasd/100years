@@ -16,16 +16,26 @@ class RiskViewController: UIViewController {
     
     // - Manager
     private let riskServerManager = RiskServerManager()
+    private let healthDataBase = HealthDataBaseManager()
     
     // - Data
     var image: UIImage!
+    var healthModel: HealthDataModel!
     private var index = 0
+    private var riskModel: RiskModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
 
+    @IBAction func nextButtonAction(_ sender: Any) {
+        let feedVC = UIStoryboard(storyboard: .feed).instantiateInitialViewController() as! FeedViewController
+        let nVC = UINavigationController(rootViewController: feedVC)
+        nVC.setNavigationBarHidden(true, animated: false)
+        present(nVC, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: -
@@ -34,9 +44,9 @@ class RiskViewController: UIViewController {
 private extension RiskViewController {
     
     func configure() {
-        // configureImageView()
-        // loadPhoto()
-        fillStatsView()
+        hideAllUI(hide: true)
+        configureImageView()
+        loadPhoto()
     }
     
     func configureImageView() {
@@ -45,15 +55,30 @@ private extension RiskViewController {
     
     func loadPhoto() {
         let imageData = image.jpegData(compressionQuality: 1.0) ?? Data()
-        riskServerManager.upload(data: imageData) { (risk, error) in
+        riskServerManager.upload(data: imageData) { [weak self] (risk, error) in
             if let risk = risk {
-                // dismiss(animated: true, completion: nil)
+                self?.riskModel = risk
+                self?.calcRisk()
+                self?.fillStatsView()
+                self?.hideAllUI(hide: false)
+            } else {
+                
             }
         }
     }
     
     func fillStatsView() {
-        statsView.update(title: Const.titles[index], text: Const.textes[index], color: Const.colors[index], index: index + 1)
+        statsView.update(
+            title: Const.titles[index],
+            text: Const.textes[index],
+            color: AppColor.color(fromHex: Const.colors[index]),
+            index: healthModel.index)
+    }
+    
+    func hideAllUI(hide: Bool) {
+        for subview in view.subviews {
+            subview.isHidden = hide
+        }
     }
     
 }
@@ -63,10 +88,98 @@ private extension RiskViewController {
 
 private extension RiskViewController {
     
+    func calcRisk() {
+        var risk = 0
+        
+        // - Есть родственник
+        if healthModel.relativeStroke == 0 {
+            risk += 30
+        }
+        
+        // - Пол
+        if healthModel.sex == 0 {
+            risk += 5
+        }
+        
+        // - Пульс
+        if healthModel.bpm > 100 {
+            risk += 10
+        }
+        
+        // - Шаги
+        if healthModel.steps <= 1000 {
+            risk += 9
+        } else if healthModel.steps <= 2000 {
+            risk += 8
+        } else if healthModel.steps <= 3000 {
+            risk += 7
+        } else if healthModel.steps <= 4000 {
+            risk += 6
+        } else if healthModel.steps <= 5000 {
+            risk += 5
+        } else if healthModel.steps <= 6000 {
+            risk += 4
+        } else if healthModel.steps <= 7000 {
+            risk += 3
+        } else if healthModel.steps <= 8000 {
+            risk += 2
+        } else if healthModel.steps <= 9000 {
+            risk += 1
+        }
+        
+        // - ИМТ
+        let imt = healthModel.weight / ((healthModel.height / 100) * (healthModel.height / 100))
+        if imt >= 30 && imt <= 35 {
+            risk += 5
+        } else if imt > 35 && imt <= 39 {
+            risk += 10
+        } else {
+            risk += 15
+        }
+        
+        // - Покраснения лица
+        if riskModel.face >= 60 {
+            risk += 13
+        } else if riskModel.face > 30 {
+            risk += 8
+        } else if riskModel.face > 10 {
+            risk += 3
+        }
+        
+        // - Курение
+        if healthModel.smoking == 0 && riskModel.teeth > 30 {
+            risk += 10
+        }
+        
+        // - Проверка верхних границ
+        if risk >= 100 {
+            risk -= 10
+        }
+        
+        let riskTo10 = risk / 10
+        
+        var localIndex = 0
+        if riskTo10 < 4 {
+            localIndex = 0
+        } else if riskTo10 < 7 {
+            localIndex = 1
+        } else {
+            localIndex = 2
+        }
+        
+        index = localIndex
+        
+        healthModel.index = riskTo10
+        healthModel.title = Const.titles[localIndex]
+        healthModel.color = Const.colors[localIndex]
+        
+        healthDataBase.save(healthModel: healthModel)
+    }
+    
     enum Const {
         static let titles = ["Все хорошо", "Лучше сходите к врачу", "Срочно к врачу!"]
         static let textes = ["Ведите здоровый образ жизни", "Проверьте свое здоровье в клинике", "Вам нужно вести здоровый образ жизни и регулярно проверять свое здоровье"]
-        static let colors = [AppColor.color(fromHex: "40C17B"), AppColor.color(fromHex: "FF9B04"), AppColor.color(fromHex: "FF2E00")]
+        static let colors = ["40C17B", "FF9B04", "FF2E00"]
     }
     
 }
