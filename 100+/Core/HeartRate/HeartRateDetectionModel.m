@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 const int FRAMES_PER_SECOND = 30;
-const int SECONDS = 3;
+const int SECONDS = 10;
 
 @interface HeartRateDetectionModel() <AVCaptureVideoDataOutputSampleBufferDelegate>
 

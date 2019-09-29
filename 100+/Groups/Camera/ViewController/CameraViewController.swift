@@ -44,6 +44,10 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         captureButton.delegate = self
     }
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func swiftyCamSessionDidStartRunning(_ swiftyCam: SwiftyCamViewController) {
         print("Session did start running")
         captureButton.buttonEnabled = true

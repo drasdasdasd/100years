@@ -38,6 +38,7 @@ class HeartRateViewController: UIViewController {
         cameraVC.healthModel = healthModel
         cameraVC.isLogin = isLogin
         navigationController?.pushViewController(cameraVC, animated: true)
+        nextButton.isHidden = true
     }
     
 }
@@ -59,7 +60,7 @@ extension HeartRateViewController: HeartRateDetectionModelDelegate {
     }
     
     func heartRateEnd() {
-        bpms.removeFirst(0)
+        if bpms.count > 4 { bpms.removeFirst(4) }
         let average = Int(bpms.reduce(0, +) / bpms.count)
         dataBaseManager.update(health: healthModel, bpm: average)
         titleLabel.text = "\(average)\nСредний пульс"

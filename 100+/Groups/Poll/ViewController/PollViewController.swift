@@ -46,8 +46,22 @@ class PollViewController: UIViewController {
     }
     
     @IBAction func getFromHealthKitButtonAction(_ sender: Any) {
-        healthKitManager.authorize { (finished, error) in
-            // code
+        healthKitManager.authorize { [weak self] (finished, error) in
+            do {
+                guard let ageSex = try? HealthKitManager.getAgeSex() else { return }
+                DispatchQueue.main.async {
+                    self?.ageTextField.text = "\(ageSex.age)"
+                    self?.healthModel.age = ageSex.age
+                    
+                    if ageSex.biologicalSex == .male {
+                        self?.sexSwitcher.selectedSegmentIndex = 0
+                        self?.healthModel.sex = 0
+                    } else if ageSex.biologicalSex == .female {
+                        self?.sexSwitcher.selectedSegmentIndex = 1
+                        self?.healthModel.sex = 1
+                    }
+                }
+            }
         }
     }
     

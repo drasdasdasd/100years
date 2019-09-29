@@ -519,6 +519,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				Base,
 				ru,
 			);
@@ -782,13 +783,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "100+/100+.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QD9F2KD3PW;
+				DEVELOPMENT_TEAM = 7K6W99SAJR;
 				INFOPLIST_FILE = "100+/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "DB.-00-";
+				PRODUCT_BUNDLE_IDENTIFIER = DB.100YEARS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "100+/100+-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -805,13 +806,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "100+/100+.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QD9F2KD3PW;
+				DEVELOPMENT_TEAM = 7K6W99SAJR;
 				INFOPLIST_FILE = "100+/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "DB.-00-";
+				PRODUCT_BUNDLE_IDENTIFIER = DB.100YEARS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "100+/100+-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
