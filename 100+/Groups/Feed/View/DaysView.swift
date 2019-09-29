@@ -24,17 +24,19 @@ class DaysView: UIView {
     }
     
     func update(steps: [StepModel]) {
+        progressHeights.removeAll()
         self.steps = steps
         updateLeftLabel()
         calcSizes()
         collectionView.reloadData()
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .right, animated: false)
     }
     
     private func calcSizes() {
         let onePercent = CGFloat(FeedConstant.maxDaysCellHeight / 10000.0)
         for step in steps {
             let count = min(step.steps, 10000)
-            print(CGFloat(count) * onePercent)
+            print("one", CGFloat(count) * onePercent, step.date, step.steps)
             progressHeights.append(CGFloat(count) * onePercent)
         }
     }

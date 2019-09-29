@@ -182,6 +182,14 @@ private extension RiskViewController {
             localIndex = 2
         }
         
+        if healthModel.age > 39 && healthModel.age < 50 {
+            risk += 5
+        } else if healthModel.age > 39 && healthModel.age < 60 {
+            risk += 8
+        } else if healthModel.age > 39 && healthModel.age < 90 {
+            risk += 12
+        }
+        
         index = localIndex
         
         try? healthDataBase.realm.write { [weak self] in

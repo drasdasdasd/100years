@@ -20,9 +20,7 @@ class PointsManager {
             let date = now.date(days: -index) ?? Date()
             hkManager.getSteps(date: date) { (steps) in
                 values.append(StepModel(date: date, steps: Int(steps)))
-                if index == 31 {
-                    completion(values)
-                }
+                completion(values)
             }
         }
     }
