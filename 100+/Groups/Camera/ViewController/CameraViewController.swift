@@ -19,6 +19,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     // - Data
     var healthModel: HealthDataModel!
+    var isLogin = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         let riskVC = UIStoryboard(storyboard: .risk).instantiateInitialViewController() as! RiskViewController
         riskVC.healthModel = healthModel
         riskVC.image = photo
+        riskVC.isLogin = isLogin
         navigationController?.pushViewController(riskVC, animated: true)
     }
     

@@ -16,6 +16,19 @@ class HealthDataBaseManager: NSObject {
 }
 
 // MARK: -
+// MARK: - Update
+
+extension HealthDataBaseManager {
+    
+    func update(health: HealthDataModel, bpm: Int) {
+        try? self.realm.write { [weak self] in
+           health.bpm = bpm
+        }
+    }
+    
+}
+
+// MARK: -
 // MARK: - Get
 
 extension HealthDataBaseManager {

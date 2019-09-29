@@ -13,10 +13,14 @@ class HeartRateViewController: UIViewController {
     // - UI
     @IBOutlet weak var titleLabel: UILabel!
     
+    // - Manager
+    private let dataBaseManager = HealthDataBaseManager()
+    
     // - Data
     private var heartRateModel = HeartRateDetectionModel()
     private var bpms = [Int]()
     var healthModel: HealthDataModel!
+    var isLogin = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,7 @@ class HeartRateViewController: UIViewController {
     @IBAction func nextButtonAction(_ sender: Any) {
         let cameraVC = UIStoryboard(storyboard: .camera).instantiateInitialViewController() as! CameraViewController
         cameraVC.healthModel = healthModel
+        cameraVC.isLogin = isLogin
         navigationController?.pushViewController(cameraVC, animated: true)
     }
     
@@ -55,7 +60,7 @@ extension HeartRateViewController: HeartRateDetectionModelDelegate {
     func heartRateEnd() {
         bpms.removeFirst(0)
         let average = Int(bpms.reduce(0, +) / bpms.count)
-        healthModel.bpm = average
+        dataBaseManager.update(health: healthModel, bpm: average)
         titleLabel.text = "\(average)\nСредний пульс"
     }
     

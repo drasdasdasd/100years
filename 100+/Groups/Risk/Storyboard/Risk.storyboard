@@ -79,7 +79,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="WFK-4e-OvP"/>
                                 </constraints>
-                                <state key="normal" title="Продолжить →">
+                                <state key="normal" title="Готово">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

@@ -30,10 +30,11 @@ class FeedViewController: UIViewController {
         configure()
     }
 
-    @IBAction func cameraButtonAction(_ sender: Any) {
-    }
-    
-    @IBAction func likeButtonAction(_ sender: Any) {
+    @IBAction func startAnalizeAction(_ sender: Any) {
+        let heartRateVC = UIStoryboard(storyboard: .heartRate).instantiateInitialViewController() as! HeartRateViewController
+        heartRateVC.isLogin = false
+        heartRateVC.healthModel = healthModel
+        navigationController?.pushViewController(heartRateVC, animated: true)
     }
     
     @IBAction func switcherChanged(_ sender: UISegmentedControl) {

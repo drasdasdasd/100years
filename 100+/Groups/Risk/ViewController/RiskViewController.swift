@@ -21,6 +21,7 @@ class RiskViewController: UIViewController {
     // - Data
     var image: UIImage!
     var healthModel: HealthDataModel!
+    var isLogin = true
     private var index = 0
     private var riskModel: RiskModel!
 
@@ -30,10 +31,14 @@ class RiskViewController: UIViewController {
     }
 
     @IBAction func nextButtonAction(_ sender: Any) {
-        let feedVC = UIStoryboard(storyboard: .feed).instantiateInitialViewController() as! FeedViewController
-        let nVC = UINavigationController(rootViewController: feedVC)
-        nVC.setNavigationBarHidden(true, animated: false)
-        present(nVC, animated: true, completion: nil)
+        if isLogin {
+            let feedVC = UIStoryboard(storyboard: .feed).instantiateInitialViewController() as! FeedViewController
+            let nVC = UINavigationController(rootViewController: feedVC)
+            nVC.setNavigationBarHidden(true, animated: false)
+            present(nVC, animated: true, completion: nil)
+        } else {
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
     
 }
@@ -169,12 +174,14 @@ private extension RiskViewController {
         
         index = localIndex
         
-        healthModel.index = riskTo10
-        healthModel.title = Const.titles[localIndex]
-        healthModel.color = Const.colors[localIndex]
-        
-        healthModel.teeth = Int(riskModel.teeth)
-        healthModel.face = Int(riskModel.face)
+        try? healthDataBase.realm.write { [weak self] in
+            self?.healthModel.index = riskTo10
+            self?.healthModel.title = Const.titles[localIndex]
+            self?.healthModel.color = Const.colors[localIndex]
+            
+            self?.healthModel.teeth = Int(riskModel.teeth)
+            self?.healthModel.face = Int(riskModel.face)
+        }
         
         healthDataBase.save(healthModel: healthModel)
     }
