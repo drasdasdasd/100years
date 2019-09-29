@@ -31,7 +31,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlm-Xj-6VG">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlm-Xj-6VG">
                                 <rect key="frame" x="20" y="788" width="374" height="54"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -65,6 +65,7 @@
                         <viewLayoutGuide key="safeArea" id="Q8s-LQ-1gH"/>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="rlm-Xj-6VG" id="QGO-LI-Urg"/>
                         <outlet property="titleLabel" destination="Zm0-qN-LCn" id="UAF-VM-fFQ"/>
                     </connections>
                 </viewController>

@@ -13,6 +13,8 @@ class StatsView: UIView {
     // - UI
     @IBOutlet weak var indexLabel: UILabel!
     @IBOutlet weak var strokeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
     private var shapeLayer: CAShapeLayer!
     private var trackLayer: CAShapeLayer!
     
@@ -36,6 +38,9 @@ class StatsView: UIView {
         shapeLayer.strokeColor = color.cgColor
         indexLabel.textColor = color
         indexLabel.text = "\(index) из 10"
+        titleLabel.text = title
+        textLabel.text = text
+        
     }
     
 }

@@ -11,6 +11,8 @@ import UIKit
 class RiskViewController: UIViewController {
     
     // - UI
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var statsView: StatsView!
     
@@ -41,6 +43,10 @@ class RiskViewController: UIViewController {
         }
     }
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 // MARK: -
@@ -67,7 +73,7 @@ private extension RiskViewController {
                 self?.fillStatsView()
                 self?.hideAllUI(hide: false)
             } else {
-                
+                self?.showProblemAlert()
             }
         }
     }
@@ -84,6 +90,10 @@ private extension RiskViewController {
         for subview in view.subviews {
             subview.isHidden = hide
         }
+        
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.isHidden = !hide
+        loadingLabel.isHidden = !hide
     }
     
 }
@@ -98,7 +108,7 @@ private extension RiskViewController {
         
         // - Есть родственник
         if healthModel.relativeStroke == 0 {
-            risk += 30
+            risk += 20
         }
         
         // - Пол
@@ -138,17 +148,17 @@ private extension RiskViewController {
             risk += 5
         } else if imt > 35 && imt <= 39 {
             risk += 10
-        } else {
+        } else if imt > 39 {
             risk += 15
         }
         
         // - Покраснения лица
         if riskModel.face >= 60 {
-            risk += 13
+            risk += 10
         } else if riskModel.face > 30 {
-            risk += 8
+            risk += 5
         } else if riskModel.face > 10 {
-            risk += 3
+            risk += 2
         }
         
         // - Курение
@@ -190,6 +200,21 @@ private extension RiskViewController {
         static let titles = ["Все хорошо", "Лучше сходите к врачу", "Срочно к врачу!"]
         static let textes = ["Ведите здоровый образ жизни", "Проверьте свое здоровье в клинике", "Вам нужно вести здоровый образ жизни и регулярно проверять свое здоровье"]
         static let colors = ["40C17B", "FF9B04", "FF2E00"]
+    }
+    
+}
+
+// MARK: -
+// MARK: - Show logic
+
+private extension RiskViewController {
+    
+    func showProblemAlert() {
+        let alert = UIAlertController(title: "Ошибка", message: "Пожалуйста, попробуйте еще раз.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Хорошо", style: .default, handler: { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
 }

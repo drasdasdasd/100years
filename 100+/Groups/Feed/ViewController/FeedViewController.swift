@@ -29,6 +29,12 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getSteps()
+        getHealthModel()
+    }
 
     @IBAction func startAnalizeAction(_ sender: Any) {
         let heartRateVC = UIStoryboard(storyboard: .heartRate).instantiateInitialViewController() as! HeartRateViewController
@@ -74,12 +80,10 @@ private extension FeedViewController {
     }
     
     func getSteps() {
-        healthKitManager.authorize { [weak self] (finished, error) in
-            self?.pointsManager.getSteps(completion: { (steps) in
-                self?.steps = steps.sorted(by: { $0.date > $1.date })
-                self?.daysView.update(steps: steps.sorted(by: { $0.date > $1.date }))
-            })
-        }
+        pointsManager.getSteps(completion: { [weak self] (steps) in
+            self?.steps = steps.sorted(by: { $0.date > $1.date })
+            self?.daysView.update(steps: steps.sorted(by: { $0.date > $1.date }))
+        })
     }
     
 }

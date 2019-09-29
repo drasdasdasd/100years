@@ -45,6 +45,8 @@
                                 <connections>
                                     <outlet property="indexLabel" destination="N7w-K4-htb" id="rAe-2y-ndI"/>
                                     <outlet property="strokeLabel" destination="8xo-QZ-Qhv" id="iui-CN-4TV"/>
+                                    <outlet property="textLabel" destination="gme-eb-IE2" id="pnW-cM-WcN"/>
+                                    <outlet property="titleLabel" destination="W4i-te-JHy" id="RCu-ph-7f5"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вам нужно вести здоровый образ жизни и регулярно проверять свое здоровье" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gme-eb-IE2">
@@ -66,6 +68,9 @@
                                     <constraint firstAttribute="height" constant="36" id="iD1-DW-qnu"/>
                                 </constraints>
                                 <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="tU4-f5-HhN" eventType="touchUpInside" id="YMB-IV-OIt"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваш риск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xo-QZ-Qhv">
                                 <rect key="frame" x="168" y="469" width="78" height="21"/>
@@ -91,6 +96,19 @@
                                     <action selector="nextButtonAction:" destination="tU4-f5-HhN" eventType="touchUpInside" id="c87-kV-jDb"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ynG-Hw-erv">
+                                <rect key="frame" x="197" y="363" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Обработка занимает время, подождите, пожалуйста" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-3F-gge">
+                                <rect key="frame" x="87" y="390" width="240" height="33.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="mqT-Ac-vc9"/>
+                                    <constraint firstAttribute="height" constant="33.5" id="wAm-rz-Ggr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -99,10 +117,14 @@
                             <constraint firstItem="jiR-3m-qO8" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="95Y-5S-kSv"/>
                             <constraint firstItem="8xo-QZ-Qhv" firstAttribute="top" secondItem="N7w-K4-htb" secondAttribute="bottom" constant="7" id="9fS-4i-PJj"/>
                             <constraint firstItem="4AE-4m-rGo" firstAttribute="top" secondItem="yK3-mR-55S" secondAttribute="top" constant="10" id="Dkf-iC-XyV"/>
+                            <constraint firstItem="ynG-Hw-erv" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="HMN-4k-3aa"/>
+                            <constraint firstItem="gIV-3F-gge" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="JkY-qN-MDb"/>
                             <constraint firstItem="YON-G0-4Ci" firstAttribute="top" secondItem="gme-eb-IE2" secondAttribute="bottom" constant="10" id="M7a-Ti-MM2"/>
+                            <constraint firstItem="ynG-Hw-erv" firstAttribute="centerY" secondItem="yK3-mR-55S" secondAttribute="centerY" constant="-80" id="PvP-mt-qJI"/>
                             <constraint firstItem="8xo-QZ-Qhv" firstAttribute="centerX" secondItem="jiR-3m-qO8" secondAttribute="centerX" id="SnK-BL-Uda"/>
                             <constraint firstAttribute="trailing" secondItem="gme-eb-IE2" secondAttribute="trailing" constant="25" id="Vai-pP-Lqh"/>
                             <constraint firstItem="jiR-3m-qO8" firstAttribute="centerY" secondItem="yK3-mR-55S" secondAttribute="centerY" id="VtX-si-wpz"/>
+                            <constraint firstItem="gIV-3F-gge" firstAttribute="top" secondItem="ynG-Hw-erv" secondAttribute="bottom" constant="7" id="XVb-ZL-CA7"/>
                             <constraint firstItem="W4i-te-JHy" firstAttribute="centerX" secondItem="yK3-mR-55S" secondAttribute="centerX" id="djR-b3-CMe"/>
                             <constraint firstItem="yK3-mR-55S" firstAttribute="trailing" secondItem="YON-G0-4Ci" secondAttribute="trailing" constant="20" id="kNt-ZP-zEe"/>
                             <constraint firstItem="YON-G0-4Ci" firstAttribute="bottom" secondItem="yK3-mR-55S" secondAttribute="bottom" id="mJJ-yn-XUJ"/>
@@ -114,6 +136,8 @@
                         <viewLayoutGuide key="safeArea" id="yK3-mR-55S"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="ynG-Hw-erv" id="EZ9-OJ-dyr"/>
+                        <outlet property="loadingLabel" destination="gIV-3F-gge" id="ezX-RK-eXG"/>
                         <outlet property="photoImageView" destination="4AE-4m-rGo" id="NEZ-gs-B6W"/>
                         <outlet property="statsView" destination="jiR-3m-qO8" id="Xa7-nd-qAf"/>
                     </connections>

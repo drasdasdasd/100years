@@ -12,6 +12,7 @@ class HeartRateViewController: UIViewController {
     
     // - UI
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     // - Manager
     private let dataBaseManager = HealthDataBaseManager()
@@ -62,6 +63,7 @@ extension HeartRateViewController: HeartRateDetectionModelDelegate {
         let average = Int(bpms.reduce(0, +) / bpms.count)
         dataBaseManager.update(health: healthModel, bpm: average)
         titleLabel.text = "\(average)\nСредний пульс"
+        nextButton.isHidden = false
     }
     
 }

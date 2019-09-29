@@ -36,15 +36,18 @@ class PollViewController: UIViewController {
     }
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        if updateNextButton() {
-            let heartRateVC = UIStoryboard(storyboard: .heartRate).instantiateInitialViewController() as! HeartRateViewController
-            heartRateVC.healthModel = healthModel
-            navigationController?.pushViewController(heartRateVC, animated: true)
+        healthKitManager.authorize { [weak self] (finished, error) in
+            if finished {
+                DispatchQueue.main.async {
+                    self?.showNextVCIfPossible()
+                }
+            }
         }
     }
     
     @IBAction func getFromHealthKitButtonAction(_ sender: Any) {
         healthKitManager.authorize { (finished, error) in
+            // code
         }
     }
     
@@ -61,6 +64,14 @@ class PollViewController: UIViewController {
         }
         view.endEditing(true)
         let _ = updateNextButton()
+    }
+    
+    func showNextVCIfPossible() {
+        if updateNextButton() {
+            let heartRateVC = UIStoryboard(storyboard: .heartRate).instantiateInitialViewController() as! HeartRateViewController
+            heartRateVC.healthModel = healthModel
+            navigationController?.pushViewController(heartRateVC, animated: true)
+        }
     }
     
 }

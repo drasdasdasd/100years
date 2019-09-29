@@ -49,6 +49,7 @@
 		9217DA0A233E5F16003D5479 /* HeartRateDetectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9217DA08233E5F16003D5479 /* HeartRateDetectionModel.m */; };
 		9217DA11233E5FB1003D5479 /* HeartRate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9217DA10233E5FB1003D5479 /* HeartRate.storyboard */; };
 		9217DA14233E5FCD003D5479 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217DA13233E5FCD003D5479 /* HeartRateViewController.swift */; };
+		9226ADD823406E3A002A8810 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226ADD723406E3A002A8810 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		9217DA10233E5FB1003D5479 /* HeartRate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeartRate.storyboard; sourceTree = "<group>"; };
 		9217DA13233E5FCD003D5479 /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
 		9226ADD623404F99002A8810 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9226ADD723406E3A002A8810 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			children = (
 				9208899E233FC4940018778D /* DateExtension.swift */,
 				920889C0233FEF340018778D /* StringExtension.swift */,
+				9226ADD723406E3A002A8810 /* UIViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				9217DA0A233E5F16003D5479 /* HeartRateDetectionModel.m in Sources */,
 				9208899F233FC4940018778D /* DateExtension.swift in Sources */,
 				92088985233ECC250018778D /* HealthDataModel.swift in Sources */,
+				9226ADD823406E3A002A8810 /* UIViewControllerExtension.swift in Sources */,
 				920889BA233FEBBE0018778D /* RiskViewController.swift in Sources */,
 				92088993233F1A960018778D /* DayCollectionViewCell.swift in Sources */,
 				9208898E233EF7AD0018778D /* FeedViewController.swift in Sources */,
