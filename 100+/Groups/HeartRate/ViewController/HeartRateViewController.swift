@@ -44,7 +44,7 @@ class HeartRateViewController: UIViewController {
 }
 
 // MARK: -
-// MARK: -
+// MARK: - Delegate
 
 extension HeartRateViewController: HeartRateDetectionModelDelegate {
     
